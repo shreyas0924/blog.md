@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import { authClient } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
-import { Button } from "@/components/ui/button";
+import { SimpleEditor } from "@/components/editor/simple/simple-editor";
 
 export default function Admin() {
   const router = useRouter();
@@ -49,8 +49,8 @@ export default function Admin() {
   return (
     <div className="flex justify-center align-middle">
       <div className="flex gap-4 mt-4">
-        <p className="bold text-3xl">Markdown Editor</p>
-        <Button onClick={handleSignout}>Sign Out</Button>
+        <SimpleEditor />
+        {/* <Button onClick={handleSignout}>Sign Out</Button> */}
       </div>
     </div>
   );
