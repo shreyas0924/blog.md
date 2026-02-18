@@ -3,9 +3,10 @@ import { notFound } from "next/navigation";
 import { format } from "date-fns";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import rehypeSlug from "rehype-slug";
+import rehypeHighlight from "rehype-highlight";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
+import "highlight.js/styles/github.css";
 
 export async function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }));
@@ -113,7 +114,10 @@ export default async function BlogPost({
 
       {/* Content */}
       <div className="prose">
-        <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeSlug]}>
+        <ReactMarkdown
+          remarkPlugins={[remarkGfm]}
+          rehypePlugins={[rehypeHighlight]}
+        >
           {post.content}
         </ReactMarkdown>
       </div>
