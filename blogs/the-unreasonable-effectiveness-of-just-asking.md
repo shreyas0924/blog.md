@@ -3,6 +3,7 @@ title: "The Unreasonable Effectiveness of Just Asking"
 date: "2024-10-03"
 description: "Most blockers dissolve the moment you voice them to another person."
 tags: ["productivity", "communication"]
+published: false 
 ---
 
 The most productive thing I do most weeks is a ten-minute conversation with a colleague.

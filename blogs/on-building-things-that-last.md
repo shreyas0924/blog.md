@@ -3,6 +3,7 @@ title: "On Building Things That Last"
 date: "2024-11-15"
 description: "Some thoughts on software craftsmanship and why the boring choices are usually the right ones."
 tags: ["engineering", "craft"]
+published: false 
 ---
 
 There's a certain kind of engineer who reaches for the newest tool for every problem. A new framework drops, and suddenly the old one is "legacy." A new pattern emerges, and everything written before is technical debt.

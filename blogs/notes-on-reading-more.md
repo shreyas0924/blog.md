@@ -3,6 +3,7 @@ title: "Notes on Reading More"
 date: "2024-08-22"
 description: "What actually worked for getting back into reading after years of screens."
 tags: ["reading", "habits"]
+published: false 
 ---
 
 I used to read constantly. Through school, through college, through my early twenties—books were the main way I spent free time.

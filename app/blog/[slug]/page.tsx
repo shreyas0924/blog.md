@@ -44,7 +44,7 @@ export default async function BlogPost({
           textDecoration: "none",
           fontSize: "0.85rem",
           fontFamily: '"JetBrains Mono", monospace',
-          marginBottom: "2.5rem",
+          marginBottom: "1rem",
           transition: "color 0.15s",
         }}
       >

@@ -10,8 +10,8 @@ export interface PostMeta {
   date: string;
   description?: string;
   tags?: string[];
+  published?: boolean;
 }
-
 export interface Post extends PostMeta {
   content: string;
 }
@@ -38,12 +38,13 @@ export function getAllPosts(): PostMeta[] {
         : new Date().toISOString(),
       description: data.description || "",
       tags: data.tags || [],
+      published: data.published === true,
     };
   });
 
-  return posts.sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
-  );
+  return posts
+    .filter((p) => p.published)
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
 export function getPost(slug: string): Post | null {
@@ -53,7 +54,7 @@ export function getPost(slug: string): Post | null {
 
   const raw = fs.readFileSync(filepath, "utf-8");
   const { data, content } = matter(raw);
-
+  if (!data.published) return null;
   return {
     slug,
     title: data.title || slug,
@@ -71,5 +72,10 @@ export function getAllSlugs(): string[] {
   return fs
     .readdirSync(blogsDir)
     .filter((f) => f.endsWith(".md"))
+    .filter((f) => {
+      const raw = fs.readFileSync(path.join(blogsDir, f), "utf-8");
+      const { data } = matter(raw);
+      return data.published === true;
+    })
     .map((f) => f.replace(/\.md$/, ""));
 }

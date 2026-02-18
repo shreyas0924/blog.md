@@ -8,7 +8,6 @@ export function Navbar() {
         borderBottom: '1px solid var(--border)',
         paddingTop: '1.25rem',
         paddingBottom: '1.25rem',
-        marginBottom: '3rem',
       }}
     >
       <div
@@ -20,6 +19,7 @@ export function Navbar() {
           alignItems: 'center',
           justifyContent: 'space-between',
         }}
+              className='border-b pb-4'
       >
         <Link
           href="/"
