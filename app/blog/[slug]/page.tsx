@@ -4,9 +4,28 @@ import { format } from "date-fns";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
+import { visit } from "unist-util-visit";
+import type { Root, Element } from "hast";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import "highlight.js/styles/github.css";
+
+// Set default language for code blocks without one
+function rehypeSetDefaultLanguage() {
+  return (tree: Root) => {
+    visit(tree, "element", (node: Element) => {
+      if (node.tagName === "pre" && node.children[0]?.type === "element" && node.children[0].tagName === "code") {
+        const codeNode = node.children[0] as Element;
+        const classNames = codeNode.properties?.className as string[] || [];
+        const hasLanguage = classNames.some((c: string) => c.startsWith("language-"));
+        if (!hasLanguage) {
+          codeNode.properties = codeNode.properties || {};
+          codeNode.properties.className = ["language-javascript"];
+        }
+      }
+    });
+  };
+}
 
 export async function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }));
@@ -116,7 +135,7 @@ export default async function BlogPost({
       <div className="prose">
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
-          rehypePlugins={[rehypeHighlight]}
+          rehypePlugins={[rehypeSetDefaultLanguage, rehypeHighlight]}
         >
           {post.content}
         </ReactMarkdown>
