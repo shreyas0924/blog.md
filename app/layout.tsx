@@ -1,32 +1,30 @@
-import type { Metadata } from 'next'
-import './globals.css'
-import { Navbar } from '@/components/navbar'
-import { ThemeProvider } from '@/components/theme-provider';
+import type { Metadata } from "next";
+import "./globals.css";
+import { Navbar } from "@/components/navbar";
+import { ThemeProvider } from "@/components/theme-provider";
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
   title: "Shreyas' Blogs",
-  description: 'Writing about things I find interesting.',
-}
+  description: "Writing about things I find interesting.",
+};
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          <Navbar />
-          <main
-            style={{
-              width: '66.666%',
-              maxWidth: '720px',
-              margin: '0 auto',
-              paddingBottom: '6rem',
-            }}
-          >
-            {children}
-          </main>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <div className="max-w-4xl mx-auto px-4">
+            <Navbar />
+            <main>{children}</main>
+          </div>
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>
-  )
+  );
 }
-
