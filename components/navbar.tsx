@@ -8,7 +8,7 @@ export function Navbar() {
 
   return (
     <nav
-      className=" w-full border-b mx-auto pb-4 border-neutral-200 sm:w-5/6 dark:border-neutral-700 pt-5"
+      className="border-b mx-auto pb-4 border-neutral-200 sm:w-5/6 dark:border-neutral-700 pt-5"
       aria-label="Main navigation"
     >
       <div className="flex items-center justify-between ">
@@ -17,12 +17,12 @@ export function Navbar() {
             href="/"
             className="font-serif font-bold text-base tracking-tight text-neutral-900 dark:text-neutral-100"
           >
-            shreyas&apos; blogs
+           Blogs 
           </Link>
         </div>
 
         <div className="hidden md:flex items-center gap-6">
-          <Link
+          {/* <Link
             href="/blog"
             className="text-sm text-neutral-700 dark:text-neutral-300 hover:underline"
           >
@@ -39,13 +39,13 @@ export function Navbar() {
             className="text-sm text-neutral-700 dark:text-neutral-300 hover:underline"
           >
             Contact
-          </Link>
+          </Link> */}
           <ThemeToggle />
         </div>
 
         <div className="md:hidden flex items-center gap-2">
           <ThemeToggle />
-          <button
+          {/* <button
             aria-label="Toggle menu"
             aria-expanded={open}
             onClick={() => setOpen(!open)}
@@ -82,12 +82,12 @@ export function Navbar() {
                 />
               </svg>
             )}
-          </button>
+          </button> */}
         </div>
       </div>
 
       {open && (
-        <div className="md:hidden max-w-180 mt-2 flex flex-col gap-3 pb-4">
+        <div className="md:hidden max-w-[720px] mt-2 flex flex-col gap-3 pb-4">
           <Link
             href="/blog"
             className="text-sm underline text-neutral-700 dark:text-neutral-300"
