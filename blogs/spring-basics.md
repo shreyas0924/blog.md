@@ -1,5 +1,5 @@
 ---
-title: "Spring Framework Introduction"
+title: "Spring Framework"
 date: "2025-01-04"
 published: true
 description: Spring Framework is a powerful and widely used Java framework for building enterprise applications. It provides comprehensive infrastructure support for developing Java applications, making it easier to manage dependencies, configure components, and build robust, scalable applications. 
