@@ -11,7 +11,7 @@ export default function HomeClient({ posts }: { posts: any[] }) {
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
-      className="max-w-3xl mx-auto px-6"
+      className="max-w-3xl mx-auto md:px-6"
     >
       <ul className="divide-y divide-border">
         {posts.map((post, i) => (
@@ -29,7 +29,7 @@ export default function HomeClient({ posts }: { posts: any[] }) {
                 {post.title}
               </span>
 
-              <span className="text-xs font-mono ">
+              <span className="text-xs font-mono pt-1 ">
                 {format(new Date(post.date), "MMM d, yyyy")}
               </span>
             </Link>

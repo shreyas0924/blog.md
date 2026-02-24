@@ -198,16 +198,16 @@ export default function BlogPostClient({ post }: { post: any }) {
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
-      className="max-w-3xl mx-auto px-6"
+      className="max-w-3xl mx-auto md:px-6 px-1"
     >
       {/* Top bar */}
-      <div className="flex items-center justify-between mt-6 mb-6 text-xs text-muted-foreground font-mono">
+      <div className="flex items-center justify-between mt-6 mb-6 text-m text-muted-foreground font-mono">
         <Link
           href="/"
           className="flex items-center gap-1 hover:text-foreground transition"
         >
           <ArrowLeft size={14} />
-          back
+          <div>back</div>
         </Link>
 
         <span>{readingTime}</span>
@@ -247,6 +247,8 @@ export default function BlogPostClient({ post }: { post: any }) {
       >
         {post.content}
       </ReactMarkdown>
+
+      <hr className="my-12" />
     </motion.article>
   );
 }
