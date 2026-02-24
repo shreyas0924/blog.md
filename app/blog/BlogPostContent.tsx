@@ -128,7 +128,7 @@ const components: Components = {
 
           <button
             onClick={handleCopy}
-            className="flex items-center gap-1 opacity-70 hover:opacity-100 transition border p-1 rounded-lg"
+            className="flex items-center gap-1 opacity-70 hover:opacity-100 transition border p-1 rounded-lg cursor-pointer"
           >
             {copied ? (
               <>
