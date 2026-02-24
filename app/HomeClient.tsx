@@ -13,23 +13,24 @@ export default function HomeClient({ posts }: { posts: any[] }) {
       transition={{ duration: 0.3 }}
       className="max-w-3xl mx-auto md:px-6"
     >
-      <ul className="divide-y divide-border">
+      <ul className="list-disc pl-5 my-6">
         {posts.map((post, i) => (
           <motion.li
             key={post.slug}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: i * 0.05 }}
+            className="py-2 my-4"
           >
             <Link
               href={`/blog/${post.slug}`}
-              className="flex justify-between py-5 group"
+              className="flex justify-between group"
             >
               <span className="font-serif font-semibold group-hover:opacity-70 transition">
                 {post.title}
               </span>
 
-              <span className="text-xs font-mono pt-1 ">
+              <span className="text-xs font-mono pt-1">
                 {format(new Date(post.date), "MMM d, yyyy")}
               </span>
             </Link>

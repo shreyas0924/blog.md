@@ -1,6 +1,6 @@
 ---
 title: "Hash Table Internals"
-date: "2024-02-18"
+date: "2026-02-24"
 published: true
 description: Hash tables store key-value pairs. Every language has its own implementation — Python calls them dictionaries, Java has HashMaps, JavaScript uses objects.
 tags: ['data structres', 'java']

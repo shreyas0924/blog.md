@@ -12,6 +12,7 @@ import { ArrowLeft, Copy, Check } from "lucide-react";
 import { toast } from "sonner";
 import { useState } from "react";
 import "highlight.js/styles/github.css";
+import Image from "next/image";
 
 function getReadingTime(text: string) {
   const wordsPerMinute = 200;
@@ -188,6 +189,21 @@ const components: Components = {
   td: ({ children }) => (
     <td className="px-4 py-2 text-muted-foreground">{children}</td>
   ),
+  img: ({ src, alt }) => {
+    if (!src) return null;
+
+    return (
+      <>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={src}
+          alt={alt || ""}
+          className="my-6 w-full rounded-lg border border-border"
+          loading="lazy"
+        />
+      </>
+    );
+  },
 };
 
 export default function BlogPostClient({ post }: { post: any }) {

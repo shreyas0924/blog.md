@@ -15,7 +15,7 @@ export function Navbar() {
         <div className="flex items-center gap-4">
           <Link
             href="/"
-            className="font-serif font-bold text-base tracking-tight text-neutral-900 dark:text-neutral-100"
+            className="font-serif font-bold text-xl tracking-tight text-neutral-900 dark:text-neutral-100"
           >
            Blogs 
           </Link>
