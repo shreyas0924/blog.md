@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react-hooks/rules-of-hooks */
 "use client";
 
@@ -84,13 +85,21 @@ const components: Components = {
 
     const child = Array.isArray(children) ? children[0] : children;
 
-    const code =
-      typeof child === "object" &&
-      child !== null &&
-      "props" in child &&
-      typeof child.props.children === "string"
-        ? child.props.children
-        : "";
+    function extractText(node: any): string {
+      if (typeof node === "string") return node;
+
+      if (Array.isArray(node)) {
+        return node.map(extractText).join("");
+      }
+
+      if (node && typeof node === "object" && "props" in node) {
+        return extractText(node.props.children);
+      }
+
+      return "";
+    }
+
+    const code = extractText(child);
 
     const language =
       typeof child === "object" &&
@@ -114,11 +123,11 @@ const components: Components = {
     return (
       <div className="relative my-6 group">
         <div className="flex items-center justify-between px-4 py-2 text-xs font-mono text-muted-foreground bg-muted/60 border border-b-0 rounded-t-xl">
-          <span>{language}</span>
+          <span>{language.toUpperCase()}</span>
 
           <button
             onClick={handleCopy}
-            className="flex items-center gap-1 opacity-70 hover:opacity-100 transition cursor-pointer border p-1 rounded-lg"
+            className="flex items-center gap-1 opacity-70 hover:opacity-100 transition border p-1 rounded-lg"
           >
             {copied ? (
               <>
@@ -181,7 +190,6 @@ const components: Components = {
   ),
 };
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export default function BlogPostClient({ post }: { post: any }) {
   const readingTime = getReadingTime(post.content);
 
